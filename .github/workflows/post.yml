@@ -1,0 +1,24 @@
+name: Auto Post to WordPress Daily
+
+on:
+  schedule:
+    - cron: '0 3 * * *' # Runs daily at 8:30 AM IST
+  workflow_dispatch:
+
+jobs:
+  post_blog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run blog poster
+        run: python post_blog.py
