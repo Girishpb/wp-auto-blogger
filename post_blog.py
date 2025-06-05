@@ -1,10 +1,10 @@
 import requests
+import os
 from base64 import b64encode
 
-# Replace these with your actual details
-username = "AutoPoster"
-app_password = "C0Q3 VKUN kY1j uKBw oblk qJI1"
-site_url = "https://www.6club.ink"
+username = os.environ["WP_USERNAME"]
+app_password = os.environ["WP_PASSWORD"]
+site_url = os.environ["WP_SITE_URL"]
 
 auth = b64encode(f"{username}:{app_password}".encode()).decode("utf-8")
 headers = {
@@ -22,13 +22,13 @@ def post_blog(title, content):
     print(res.status_code)
     print(res.text)
 
-# Example blog list (Replace with 5 daily posts)
+# Example 5 blogs
 blogs = [
-    {"title": "AI Agent Blog 1", "content": "This blog is posted by your AI agent."},
-    {"title": "AI Agent Blog 2", "content": "Fully automated. Free. Zero BS."},
-    {"title": "AI Agent Blog 3", "content": "Yes, it really works."},
-    {"title": "AI Agent Blog 4", "content": "You can scale it anytime."},
-    {"title": "AI Agent Blog 5", "content": "Posted via GitHub Automation."}
+    {"title": "Auto Blog 1", "content": "Posted by a free AI bot."},
+    {"title": "Auto Blog 2", "content": "No paid tools used."},
+    {"title": "Auto Blog 3", "content": "WordPress REST API rocks."},
+    {"title": "Auto Blog 4", "content": "GitHub Actions is awesome."},
+    {"title": "Auto Blog 5", "content": "Yes, you can scale this easily."}
 ]
 
 for blog in blogs:
